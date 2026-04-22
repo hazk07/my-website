@@ -3,200 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services — Sites by Hassan</title>
-<meta name="description" content="Premium website design packages. Starter, Business and Premium — all built fast and beautifully.">
-<link rel="stylesheet" href="css/style.css">
+<title>Services & Pricing — Sites by Hassan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
-.page-hero { padding: 160px 0 100px; border-bottom: 1px solid var(--border); }
-.page-hero-inner { max-width: 700px; }
+:root{--gold:#C9A84C;--black:#080808;--off-black:#0F0F0F;--card:#1C1C1C;--border:#252525;--muted:#6A6A6A;--light-muted:#A8A8A8;--white:#FFFFFF;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',sans-serif;--ease:cubic-bezier(0.4,0,0.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.8;color:var(--light-muted);font-weight:300}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.05}
+em{font-style:italic}
+.container{max-width:1280px;margin:0 auto;padding:0 52px}
+@media(max-width:768px){.container{padding:0 24px}}
+.tag{display:inline-block;font-size:0.68rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.divider{width:52px;height:1px;background:var(--gold);margin:22px 0}
+.gold{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:0.75rem;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;padding:15px 34px;border:1px solid;cursor:pointer;transition:all 0.35s var(--ease);position:relative;overflow:hidden;background:transparent;font-family:var(--sans)}
+.btn::before{content:'';position:absolute;inset:0;transform:translateX(-101%);transition:transform 0.4s var(--ease);z-index:0}
+.btn:hover::before{transform:translateX(0)}
+.btn span{position:relative;z-index:1}
+.btn-gold{border-color:var(--gold);color:var(--gold)}.btn-gold::before{background:var(--gold)}.btn-gold:hover{color:var(--black)}
+.btn-white{border-color:rgba(255,255,255,0.25);color:var(--white)}.btn-white::before{background:var(--white)}.btn-white:hover{color:var(--black)}
 
-/* ─── PACKAGES ─── */
-.packages-section { padding: 120px 0; }
-.packages-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  background: var(--border);
-  margin-top: 64px;
-}
-@media (max-width: 900px) { .packages-grid { grid-template-columns: 1fr; } }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;transition:all 0.35s var(--ease)}
+nav.scrolled{background:rgba(8,8,8,0.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--serif);font-size:1.45rem;color:var(--white)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links a{font-size:0.73rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--light-muted);transition:color 0.25s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-cta{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:10px 22px;border:1px solid var(--gold);color:var(--gold);transition:all 0.3s;background:transparent;cursor:pointer;font-family:var(--sans)}
+.nav-cta:hover{background:var(--gold);color:var(--black)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--white);transition:all 0.3s}
+@media(max-width:900px){nav{padding:0 24px}.nav-links,.nav-cta{display:none}.hamburger{display:flex}}
+.mob-menu{position:fixed;inset:0;background:var(--black);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;opacity:0;pointer-events:none;transition:opacity 0.4s}
+.mob-menu.open{opacity:1;pointer-events:all}
+.mob-menu a{font-family:var(--serif);font-size:2.8rem;color:var(--white);transition:color 0.2s}
+.mob-menu a:hover{color:var(--gold)}
+.mob-close{position:absolute;top:28px;right:28px;background:none;border:none;color:var(--white);font-size:1.8rem;cursor:pointer}
 
-.package-card {
-  background: var(--off-black);
-  padding: 60px 48px;
-  position: relative;
-  transition: var(--transition);
-}
-.package-card.featured { background: var(--card); }
-.package-card.featured::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-.package-badge {
-  display: inline-block;
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  margin-bottom: 40px;
-}
-.package-card.featured .package-badge {
-  background: var(--gold);
-  color: var(--black);
-}
-.package-price {
-  font-family: var(--serif);
-  font-size: 5rem;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.package-price sup { font-size: 1.8rem; vertical-align: top; margin-top: 14px; display: inline-block; color: var(--gold); }
-.package-tagline {
-  font-size: 0.88rem;
-  color: var(--muted);
-  margin-bottom: 40px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid var(--border);
-}
-.package-features { list-style: none; margin-bottom: 48px; display: flex; flex-direction: column; gap: 16px; }
-.package-features li {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  font-size: 0.9rem;
-  color: var(--light-muted);
-}
-.feat-check {
-  width: 18px; height: 18px;
-  border: 1px solid var(--gold);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  font-size: 10px;
-  color: var(--gold);
-  margin-top: 2px;
-}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity 0.8s var(--ease),transform 0.8s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.rd1{transition-delay:0.1s}.rd2{transition-delay:0.2s}.rd3{transition-delay:0.3s}
 
-/* ─── ADD-ONS ─── */
-.addons-section {
-  background: var(--off-black);
-  padding: 120px 0;
-}
-.addons-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
-  background: var(--border);
-  margin-top: 64px;
-}
-@media (max-width: 1000px) { .addons-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) { .addons-grid { grid-template-columns: 1fr; } }
+/* PAGE HERO */
+.page-hero{padding:160px 0 100px;border-bottom:1px solid var(--border)}
+.page-hero h1{font-size:clamp(3rem,7vw,6rem);margin-bottom:24px}
 
-.addon-card {
-  background: var(--off-black);
-  padding: 40px 36px;
-  transition: var(--transition);
-}
-.addon-card:hover { background: var(--card); }
-.addon-icon {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  display: block;
-}
-.addon-card h4 { font-size: 1.1rem; margin-bottom: 10px; }
-.addon-card p { font-size: 0.85rem; margin-bottom: 20px; }
-.addon-price {
-  font-family: var(--serif);
-  font-size: 1.6rem;
-  color: var(--gold);
-}
+/* PACKAGES */
+.packages{padding:120px 0}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:60px}
+@media(max-width:860px){.pkg-grid{grid-template-columns:1fr}}
+.pkg{background:var(--off-black);padding:56px 48px;position:relative;transition:background 0.3s}
+.pkg.hot{background:var(--card)}
+.pkg.hot::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.pkg-badge{display:inline-block;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;padding:5px 14px;border:1px solid var(--gold);color:var(--gold);margin-bottom:40px}
+.pkg.hot .pkg-badge{background:var(--gold);color:var(--black)}
+.pkg-price{font-family:var(--serif);font-size:5rem;line-height:1;margin-bottom:6px}
+.pkg-price sup{font-size:1.9rem;vertical-align:top;margin-top:14px;display:inline-block;color:var(--gold)}
+.pkg-tagline{font-size:0.88rem;color:var(--muted);margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--border)}
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:48px}
+.feat-list li{display:flex;align-items:flex-start;gap:14px;font-size:0.9rem;color:var(--light-muted)}
+.feat-check{width:18px;height:18px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px;color:var(--gold);margin-top:1px}
 
-/* ─── FAQ ─── */
-.faq-section { padding: 120px 0; }
-.faq-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 100px;
-  align-items: start;
-}
-@media (max-width: 900px) { .faq-layout { grid-template-columns: 1fr; gap: 60px; } }
+/* ADDONS */
+.addons{background:var(--off-black);padding:120px 0}
+.addons-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);margin-top:60px}
+@media(max-width:1000px){.addons-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.addons-grid{grid-template-columns:1fr}}
+.addon{background:var(--off-black);padding:40px 36px;transition:background 0.3s}
+.addon:hover{background:var(--card)}
+.addon-icon{font-size:1.4rem;margin-bottom:20px;display:block}
+.addon h4{font-family:var(--serif);font-size:1.15rem;margin-bottom:10px}
+.addon p{font-size:0.85rem;margin-bottom:18px}
+.addon-price{font-family:var(--serif);font-size:1.7rem;color:var(--gold)}
 
-.faq-list { display: flex; flex-direction: column; }
-.faq-item {
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-}
-.faq-question {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 0;
-  gap: 20px;
-}
-.faq-question h4 { font-family: var(--sans); font-size: 0.95rem; font-weight: 400; }
-.faq-toggle {
-  width: 24px; height: 24px;
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px;
-  flex-shrink: 0;
-  transition: var(--transition);
-  color: var(--gold);
-}
-.faq-item.open .faq-toggle { transform: rotate(45deg); border-color: var(--gold); }
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-.faq-answer p { font-size: 0.9rem; padding-bottom: 24px; }
-.faq-item.open .faq-answer { max-height: 200px; }
+/* FAQ */
+.faq-section{padding:120px 0}
+.faq-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:100px;align-items:start}
+@media(max-width:900px){.faq-layout{grid-template-columns:1fr;gap:56px}}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer;gap:20px}
+.faq-q h4{font-family:var(--sans);font-size:0.95rem;font-weight:400}
+.faq-toggle{width:24px;height:24px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;transition:all 0.3s;color:var(--gold)}
+.faq-item.open .faq-toggle{transform:rotate(45deg);border-color:var(--gold)}
+.faq-ans{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.faq-ans p{font-size:0.9rem;padding-bottom:22px}
+.faq-item.open .faq-ans{max-height:200px}
 
-/* ─── CTA ─── */
-.services-cta {
-  background: var(--off-black);
-  border-top: 1px solid var(--border);
-  padding: 120px 0;
-  text-align: center;
-}
-.services-cta h2 { margin-bottom: 20px; }
-.services-cta p { max-width: 480px; margin: 0 auto 48px; }
+/* CTA */
+.services-cta{background:var(--off-black);border-top:1px solid var(--border);padding:120px 0;text-align:center}
+.services-cta h2{font-size:clamp(2.2rem,5vw,4rem);margin-bottom:18px}
+.services-cta p{max-width:460px;margin:0 auto 44px}
+
+/* FOOTER */
+footer{background:var(--off-black);border-top:1px solid var(--border);padding:80px 0 40px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:52px;padding-bottom:56px;border-bottom:1px solid var(--border);margin-bottom:36px}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr}}
+.foot-brand h3{font-family:var(--serif);font-size:1.8rem;margin-bottom:14px}
+.foot-brand p{font-size:0.88rem;max-width:280px;line-height:1.8}
+.foot-col h5{font-size:0.68rem;font-weight:500;letter-spacing:0.17em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.foot-col ul{list-style:none}
+.foot-col ul li{margin-bottom:11px}
+.foot-col ul li a{font-size:0.87rem;color:var(--light-muted);transition:color 0.2s}
+.foot-col ul li a:hover{color:var(--white)}
+.foot-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.foot-bottom p{font-size:0.76rem;color:var(--muted)}
+.socials{display:flex;gap:12px}
+.socials a{width:34px;height:34px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:0.75rem;font-weight:500;transition:all 0.25s}
+.socials a:hover{border-color:var(--gold);color:var(--gold)}
 </style>
 </head>
 <body>
-<nav id="main-nav"></nav>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" id="mobClose">✕</button>
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="work.html" onclick="closeMob()">Work</a>
+  <a href="services.html" onclick="closeMob()">Services</a>
+  <a href="about.html" onclick="closeMob()">About</a>
+  <a href="contact.html" onclick="closeMob()">Contact</a>
+</div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Sites <span>by Hassan</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
 
-<!-- ─── HERO ─── -->
 <section class="page-hero">
   <div class="container">
-    <div class="page-hero-inner">
-      <span class="tag">Services & Pricing</span>
-      <h1>What we <em>offer</em></h1>
-      <div class="divider"></div>
-      <p style="font-size:1.1rem; max-width:520px;">Clear packages, honest prices, exceptional results. Every site is built with the same care and attention — regardless of which package you choose.</p>
-    </div>
+    <span class="tag">Services & Pricing</span>
+    <h1>What we <em>offer</em></h1>
+    <div class="divider"></div>
+    <p style="font-size:1.05rem;max-width:520px">Clear packages, honest prices, exceptional results. Every site is built with the same care — regardless of which package you choose.</p>
   </div>
 </section>
 
-<!-- ─── PACKAGES ─── -->
-<section class="packages-section">
+<section class="packages">
   <div class="container">
     <span class="tag reveal">Packages</span>
-    <h2 class="reveal">Choose your <em>package</em></h2>
-    <div class="packages-grid">
-
-      <div class="package-card reveal">
-        <div class="package-badge">Starter</div>
-        <div class="package-price"><sup>£</sup>299</div>
-        <div class="package-tagline">Get online fast. Look great immediately.</div>
-        <ul class="package-features">
+    <h2 class="reveal" style="font-size:clamp(2.2rem,4.5vw,3.8rem)">Choose your <em>package</em></h2>
+    <div class="pkg-grid">
+      <div class="pkg reveal">
+        <div class="pkg-badge">Starter</div>
+        <div class="pkg-price"><sup>£</sup>299</div>
+        <div class="pkg-tagline">Get online fast. Look great from day one.</div>
+        <ul class="feat-list">
           <li><div class="feat-check">✓</div>Up to 3 custom pages</li>
           <li><div class="feat-check">✓</div>Mobile-responsive design</li>
-          <li><div class="feat-check">✓</div>Contact form integration</li>
+          <li><div class="feat-check">✓</div>Contact form</li>
           <li><div class="feat-check">✓</div>Basic on-page SEO</li>
           <li><div class="feat-check">✓</div>Delivered in 7 days</li>
           <li><div class="feat-check">✓</div>1 round of revisions</li>
@@ -204,16 +174,15 @@
         </ul>
         <a href="contact.html" class="btn btn-white"><span>Get Started</span><span>→</span></a>
       </div>
-
-      <div class="package-card featured reveal reveal-delay-1">
-        <div class="package-badge">Business — Most Popular</div>
-        <div class="package-price"><sup>£</sup>599</div>
-        <div class="package-tagline">A proper, powerful website for your business.</div>
-        <ul class="package-features">
+      <div class="pkg hot reveal rd1">
+        <div class="pkg-badge">Business — Most Popular</div>
+        <div class="pkg-price"><sup>£</sup>599</div>
+        <div class="pkg-tagline">A proper, powerful website for your business.</div>
+        <ul class="feat-list">
           <li><div class="feat-check">✓</div>Up to 7 custom pages</li>
           <li><div class="feat-check">✓</div>Custom scroll animations</li>
           <li><div class="feat-check">✓</div>Full SEO setup + sitemap</li>
-          <li><div class="feat-check">✓</div>Google Analytics integration</li>
+          <li><div class="feat-check">✓</div>Google Analytics setup</li>
           <li><div class="feat-check">✓</div>Blog / news section</li>
           <li><div class="feat-check">✓</div>Delivered in 10 days</li>
           <li><div class="feat-check">✓</div>3 rounds of revisions</li>
@@ -221,139 +190,134 @@
         </ul>
         <a href="contact.html" class="btn btn-gold"><span>Get Started</span><span>→</span></a>
       </div>
-
-      <div class="package-card reveal reveal-delay-2">
-        <div class="package-badge">Premium</div>
-        <div class="package-price"><sup>£</sup>999</div>
-        <div class="package-tagline">The full luxury experience. No compromises.</div>
-        <ul class="package-features">
+      <div class="pkg reveal rd2">
+        <div class="pkg-badge">Premium</div>
+        <div class="pkg-price"><sup>£</sup>999</div>
+        <div class="pkg-tagline">The full luxury experience. No compromises.</div>
+        <ul class="feat-list">
           <li><div class="feat-check">✓</div>Unlimited pages</li>
           <li><div class="feat-check">✓</div>E-commerce / shop ready</li>
-          <li><div class="feat-check">✓</div>Advanced animations & interactions</li>
+          <li><div class="feat-check">✓</div>Advanced animations</li>
           <li><div class="feat-check">✓</div>Full SEO strategy document</li>
-          <li><div class="feat-check">✓</div>Booking / calendar integration</li>
+          <li><div class="feat-check">✓</div>Booking system integration</li>
           <li><div class="feat-check">✓</div>Delivered in 14 days</li>
           <li><div class="feat-check">✓</div>Unlimited revisions</li>
           <li><div class="feat-check">✓</div>1 month post-launch support</li>
-          <li><div class="feat-check">✓</div>Priority response</li>
         </ul>
         <a href="contact.html" class="btn btn-white"><span>Get Started</span><span>→</span></a>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ─── ADD-ONS ─── -->
-<section class="addons-section">
+<section class="addons">
   <div class="container">
     <span class="tag reveal">Optional Extras</span>
-    <h2 class="reveal">Powerful <em>add-ons</em></h2>
-    <p class="reveal" style="max-width:480px; margin-top:12px;">Bolt on any of these to any package to supercharge your website.</p>
+    <h2 class="reveal" style="font-size:clamp(2.2rem,4.5vw,3.8rem)">Powerful <em>add-ons</em></h2>
+    <p class="reveal" style="max-width:460px;margin-top:12px">Bolt any of these onto any package to supercharge your site.</p>
     <div class="addons-grid">
-      <div class="addon-card reveal">
-        <span class="addon-icon">◈</span>
+      <div class="addon reveal">
+        <span class="addon-icon">🎨</span>
         <h4>Logo Design</h4>
         <p>A professional logo to complete your brand identity.</p>
         <div class="addon-price">+£149</div>
       </div>
-      <div class="addon-card reveal reveal-delay-1">
-        <span class="addon-icon">✦</span>
+      <div class="addon reveal rd1">
+        <span class="addon-icon">✍️</span>
         <h4>Copywriting</h4>
         <p>Persuasive, conversion-focused copy written for you.</p>
         <div class="addon-price">+£199</div>
       </div>
-      <div class="addon-card reveal reveal-delay-2">
-        <span class="addon-icon">⬡</span>
+      <div class="addon reveal rd2">
+        <span class="addon-icon">🔧</span>
         <h4>Monthly Maintenance</h4>
         <p>Updates, edits, and support on an ongoing basis.</p>
         <div class="addon-price">£49/mo</div>
       </div>
-      <div class="addon-card reveal reveal-delay-3">
-        <span class="addon-icon">◉</span>
+      <div class="addon reveal rd3">
+        <span class="addon-icon">⚡</span>
         <h4>Speed Optimisation</h4>
-        <p>Performance audit and optimisation for top Core Web Vitals scores.</p>
+        <p>Performance audit for top Core Web Vitals scores.</p>
         <div class="addon-price">+£99</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── FAQ ─── -->
 <section class="faq-section">
   <div class="container">
     <div class="faq-layout">
       <div>
         <span class="tag reveal">FAQ</span>
-        <h2 class="reveal">Common <em>questions</em></h2>
+        <h2 class="reveal" style="font-size:clamp(2rem,4vw,3.4rem)">Common <em>questions</em></h2>
         <div class="divider reveal"></div>
-        <p class="reveal">Still have questions? <a href="contact.html" style="color:var(--gold);">Get in touch</a> and I'll get back to you within a few hours.</p>
+        <p class="reveal">Still have questions? <a href="contact.html" style="color:var(--gold)">Get in touch</a> — I'll reply within a few hours.</p>
       </div>
-      <div class="faq-list reveal">
+      <div class="reveal">
         <div class="faq-item">
-          <div class="faq-question">
-            <h4>How long does a website take to build?</h4>
-            <div class="faq-toggle">+</div>
-          </div>
-          <div class="faq-answer"><p>Most sites are delivered within 7–14 days depending on the package. Once you're happy and revisions are done, the site is live.</p></div>
+          <div class="faq-q"><h4>How long does a website take?</h4><div class="faq-toggle">+</div></div>
+          <div class="faq-ans"><p>Most sites are delivered in 7–14 days depending on the package. Once you're happy with revisions, the site goes live.</p></div>
         </div>
         <div class="faq-item">
-          <div class="faq-question">
-            <h4>What do I need to provide?</h4>
-            <div class="faq-toggle">+</div>
-          </div>
-          <div class="faq-answer"><p>Your logo (or we can create one), any photos or images you want to use, and a brief about your business and goals. We handle everything else.</p></div>
+          <div class="faq-q"><h4>What do I need to provide?</h4><div class="faq-toggle">+</div></div>
+          <div class="faq-ans"><p>Your logo (or we can create one), any photos you want to use, and a brief about your business and goals. I handle everything else.</p></div>
         </div>
         <div class="faq-item">
-          <div class="faq-question">
-            <h4>Will I be able to update the site myself?</h4>
-            <div class="faq-toggle">+</div>
-          </div>
-          <div class="faq-answer"><p>Yes. Sites are built on easy-to-use platforms so you can update text and images yourself — or we can do it for you with a maintenance plan.</p></div>
+          <div class="faq-q"><h4>Can I update the site myself?</h4><div class="faq-toggle">+</div></div>
+          <div class="faq-ans"><p>Yes. Sites are built so you can update text and images yourself — or I can do it for you with a maintenance plan.</p></div>
         </div>
         <div class="faq-item">
-          <div class="faq-question">
-            <h4>Do you offer payment plans?</h4>
-            <div class="faq-toggle">+</div>
-          </div>
-          <div class="faq-answer"><p>Yes — a 50% deposit upfront and 50% on completion. Flexible options available for larger projects. Just ask.</p></div>
+          <div class="faq-q"><h4>Do you offer payment plans?</h4><div class="faq-toggle">+</div></div>
+          <div class="faq-ans"><p>Yes — 50% deposit upfront, 50% on completion. Flexible options available for larger projects. Just ask.</p></div>
         </div>
         <div class="faq-item">
-          <div class="faq-question">
-            <h4>What if I'm not happy with the result?</h4>
-            <div class="faq-toggle">+</div>
-          </div>
-          <div class="faq-answer"><p>Your satisfaction is the priority. We work through revision rounds to make sure you're absolutely happy before anything goes live.</p></div>
+          <div class="faq-q"><h4>What if I'm not happy with the result?</h4><div class="faq-toggle">+</div></div>
+          <div class="faq-ans"><p>Your satisfaction is the priority. We work through revision rounds until you're completely happy before anything goes live.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><h4>Do you work with businesses outside the UK?</h4><div class="faq-toggle">+</div></div>
+          <div class="faq-ans"><p>Absolutely. I work with clients globally. All communication is online and timezones have never been an issue.</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── CTA ─── -->
 <section class="services-cta">
   <div class="container">
-    <span class="tag reveal">Let's go</span>
+    <span class="tag reveal">Let's Go</span>
     <h2 class="reveal">Not sure which <em>package?</em></h2>
     <p class="reveal">Book a free 30-minute call and we'll work out exactly what you need together. No pressure, no hard sell.</p>
-    <div class="reveal">
-      <a href="contact.html" class="btn btn-gold"><span>Book a Free Call</span><span>→</span></a>
-    </div>
+    <div class="reveal"><a href="contact.html" class="btn btn-gold"><span>Book a Free Call</span><span>→</span></a></div>
   </div>
 </section>
 
-<footer id="main-footer"></footer>
-<script src="js/layout.js"></script>
-<script src="js/main.js"></script>
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><h3>Sites <span class="gold">by Hassan</span></h3><p>Premium websites that convert visitors into clients. Built for businesses who refuse to settle for ordinary.</p></div>
+      <div class="foot-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="work.html">Work</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="foot-col"><h5>Services</h5><ul><li><a href="services.html">Starter — £299</a></li><li><a href="services.html">Business — £599</a></li><li><a href="services.html">Premium — £999</a></li><li><a href="services.html">Add-Ons</a></li></ul></div>
+      <div class="foot-col"><h5>Get in Touch</h5><ul><li><a href="contact.html">Start a Project</a></li><li><a href="contact.html">Book a Free Call</a></li></ul><div class="socials" style="margin-top:20px"><a href="#">In</a><a href="#">𝕏</a><a href="#">Li</a></div></div>
+    </div>
+    <div class="foot-bottom"><p>© 2025 Sites by Hassan. All rights reserved.</p><p>Built with precision. Delivered with pride.</p></div>
+  </div>
+</footer>
 <script>
-// FAQ accordion
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.querySelector('.faq-question').addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>40))
+const mob=document.getElementById('mobMenu')
+document.getElementById('hamburger').onclick=()=>{mob.classList.add('open');document.body.style.overflow='hidden'}
+document.getElementById('mobClose').onclick=closeMob
+function closeMob(){mob.classList.remove('open');document.body.style.overflow=''}
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}}),{threshold:0.1,rootMargin:'0px 0px -50px 0px'})
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r))
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click',()=>{
+    const open=item.classList.contains('open')
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'))
+    if(!open) item.classList.add('open')
+  })
+})
 </script>
 </body>
 </html>
