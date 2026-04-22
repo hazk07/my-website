@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Sites by Hassan</title>
+<meta name="description" content="Premium website design packages. Starter, Business and Premium — all built fast and beautifully.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.page-hero { padding: 160px 0 100px; border-bottom: 1px solid var(--border); }
+.page-hero-inner { max-width: 700px; }
+
+/* ─── PACKAGES ─── */
+.packages-section { padding: 120px 0; }
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+  margin-top: 64px;
+}
+@media (max-width: 900px) { .packages-grid { grid-template-columns: 1fr; } }
+
+.package-card {
+  background: var(--off-black);
+  padding: 60px 48px;
+  position: relative;
+  transition: var(--transition);
+}
+.package-card.featured { background: var(--card); }
+.package-card.featured::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.package-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  margin-bottom: 40px;
+}
+.package-card.featured .package-badge {
+  background: var(--gold);
+  color: var(--black);
+}
+.package-price {
+  font-family: var(--serif);
+  font-size: 5rem;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.package-price sup { font-size: 1.8rem; vertical-align: top; margin-top: 14px; display: inline-block; color: var(--gold); }
+.package-tagline {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+.package-features { list-style: none; margin-bottom: 48px; display: flex; flex-direction: column; gap: 16px; }
+.package-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 0.9rem;
+  color: var(--light-muted);
+}
+.feat-check {
+  width: 18px; height: 18px;
+  border: 1px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 10px;
+  color: var(--gold);
+  margin-top: 2px;
+}
+
+/* ─── ADD-ONS ─── */
+.addons-section {
+  background: var(--off-black);
+  padding: 120px 0;
+}
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--border);
+  margin-top: 64px;
+}
+@media (max-width: 1000px) { .addons-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .addons-grid { grid-template-columns: 1fr; } }
+
+.addon-card {
+  background: var(--off-black);
+  padding: 40px 36px;
+  transition: var(--transition);
+}
+.addon-card:hover { background: var(--card); }
+.addon-icon {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  display: block;
+}
+.addon-card h4 { font-size: 1.1rem; margin-bottom: 10px; }
+.addon-card p { font-size: 0.85rem; margin-bottom: 20px; }
+.addon-price {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--gold);
+}
+
+/* ─── FAQ ─── */
+.faq-section { padding: 120px 0; }
+.faq-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 100px;
+  align-items: start;
+}
+@media (max-width: 900px) { .faq-layout { grid-template-columns: 1fr; gap: 60px; } }
+
+.faq-list { display: flex; flex-direction: column; }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  gap: 20px;
+}
+.faq-question h4 { font-family: var(--sans); font-size: 0.95rem; font-weight: 400; }
+.faq-toggle {
+  width: 24px; height: 24px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: var(--transition);
+  color: var(--gold);
+}
+.faq-item.open .faq-toggle { transform: rotate(45deg); border-color: var(--gold); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.faq-answer p { font-size: 0.9rem; padding-bottom: 24px; }
+.faq-item.open .faq-answer { max-height: 200px; }
+
+/* ─── CTA ─── */
+.services-cta {
+  background: var(--off-black);
+  border-top: 1px solid var(--border);
+  padding: 120px 0;
+  text-align: center;
+}
+.services-cta h2 { margin-bottom: 20px; }
+.services-cta p { max-width: 480px; margin: 0 auto 48px; }
+</style>
+</head>
+<body>
+<nav id="main-nav"></nav>
+
+<!-- ─── HERO ─── -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <span class="tag">Services & Pricing</span>
+      <h1>What we <em>offer</em></h1>
+      <div class="divider"></div>
+      <p style="font-size:1.1rem; max-width:520px;">Clear packages, honest prices, exceptional results. Every site is built with the same care and attention — regardless of which package you choose.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PACKAGES ─── -->
+<section class="packages-section">
+  <div class="container">
+    <span class="tag reveal">Packages</span>
+    <h2 class="reveal">Choose your <em>package</em></h2>
+    <div class="packages-grid">
+
+      <div class="package-card reveal">
+        <div class="package-badge">Starter</div>
+        <div class="package-price"><sup>£</sup>299</div>
+        <div class="package-tagline">Get online fast. Look great immediately.</div>
+        <ul class="package-features">
+          <li><div class="feat-check">✓</div>Up to 3 custom pages</li>
+          <li><div class="feat-check">✓</div>Mobile-responsive design</li>
+          <li><div class="feat-check">✓</div>Contact form integration</li>
+          <li><div class="feat-check">✓</div>Basic on-page SEO</li>
+          <li><div class="feat-check">✓</div>Delivered in 7 days</li>
+          <li><div class="feat-check">✓</div>1 round of revisions</li>
+          <li><div class="feat-check">✓</div>Hosting setup guidance</li>
+        </ul>
+        <a href="contact.html" class="btn btn-white"><span>Get Started</span><span>→</span></a>
+      </div>
+
+      <div class="package-card featured reveal reveal-delay-1">
+        <div class="package-badge">Business — Most Popular</div>
+        <div class="package-price"><sup>£</sup>599</div>
+        <div class="package-tagline">A proper, powerful website for your business.</div>
+        <ul class="package-features">
+          <li><div class="feat-check">✓</div>Up to 7 custom pages</li>
+          <li><div class="feat-check">✓</div>Custom scroll animations</li>
+          <li><div class="feat-check">✓</div>Full SEO setup + sitemap</li>
+          <li><div class="feat-check">✓</div>Google Analytics integration</li>
+          <li><div class="feat-check">✓</div>Blog / news section</li>
+          <li><div class="feat-check">✓</div>Delivered in 10 days</li>
+          <li><div class="feat-check">✓</div>3 rounds of revisions</li>
+          <li><div class="feat-check">✓</div>2 weeks post-launch support</li>
+        </ul>
+        <a href="contact.html" class="btn btn-gold"><span>Get Started</span><span>→</span></a>
+      </div>
+
+      <div class="package-card reveal reveal-delay-2">
+        <div class="package-badge">Premium</div>
+        <div class="package-price"><sup>£</sup>999</div>
+        <div class="package-tagline">The full luxury experience. No compromises.</div>
+        <ul class="package-features">
+          <li><div class="feat-check">✓</div>Unlimited pages</li>
+          <li><div class="feat-check">✓</div>E-commerce / shop ready</li>
+          <li><div class="feat-check">✓</div>Advanced animations & interactions</li>
+          <li><div class="feat-check">✓</div>Full SEO strategy document</li>
+          <li><div class="feat-check">✓</div>Booking / calendar integration</li>
+          <li><div class="feat-check">✓</div>Delivered in 14 days</li>
+          <li><div class="feat-check">✓</div>Unlimited revisions</li>
+          <li><div class="feat-check">✓</div>1 month post-launch support</li>
+          <li><div class="feat-check">✓</div>Priority response</li>
+        </ul>
+        <a href="contact.html" class="btn btn-white"><span>Get Started</span><span>→</span></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── ADD-ONS ─── -->
+<section class="addons-section">
+  <div class="container">
+    <span class="tag reveal">Optional Extras</span>
+    <h2 class="reveal">Powerful <em>add-ons</em></h2>
+    <p class="reveal" style="max-width:480px; margin-top:12px;">Bolt on any of these to any package to supercharge your website.</p>
+    <div class="addons-grid">
+      <div class="addon-card reveal">
+        <span class="addon-icon">◈</span>
+        <h4>Logo Design</h4>
+        <p>A professional logo to complete your brand identity.</p>
+        <div class="addon-price">+£149</div>
+      </div>
+      <div class="addon-card reveal reveal-delay-1">
+        <span class="addon-icon">✦</span>
+        <h4>Copywriting</h4>
+        <p>Persuasive, conversion-focused copy written for you.</p>
+        <div class="addon-price">+£199</div>
+      </div>
+      <div class="addon-card reveal reveal-delay-2">
+        <span class="addon-icon">⬡</span>
+        <h4>Monthly Maintenance</h4>
+        <p>Updates, edits, and support on an ongoing basis.</p>
+        <div class="addon-price">£49/mo</div>
+      </div>
+      <div class="addon-card reveal reveal-delay-3">
+        <span class="addon-icon">◉</span>
+        <h4>Speed Optimisation</h4>
+        <p>Performance audit and optimisation for top Core Web Vitals scores.</p>
+        <div class="addon-price">+£99</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-layout">
+      <div>
+        <span class="tag reveal">FAQ</span>
+        <h2 class="reveal">Common <em>questions</em></h2>
+        <div class="divider reveal"></div>
+        <p class="reveal">Still have questions? <a href="contact.html" style="color:var(--gold);">Get in touch</a> and I'll get back to you within a few hours.</p>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>How long does a website take to build?</h4>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer"><p>Most sites are delivered within 7–14 days depending on the package. Once you're happy and revisions are done, the site is live.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>What do I need to provide?</h4>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer"><p>Your logo (or we can create one), any photos or images you want to use, and a brief about your business and goals. We handle everything else.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>Will I be able to update the site myself?</h4>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer"><p>Yes. Sites are built on easy-to-use platforms so you can update text and images yourself — or we can do it for you with a maintenance plan.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>Do you offer payment plans?</h4>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer"><p>Yes — a 50% deposit upfront and 50% on completion. Flexible options available for larger projects. Just ask.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>What if I'm not happy with the result?</h4>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer"><p>Your satisfaction is the priority. We work through revision rounds to make sure you're absolutely happy before anything goes live.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="services-cta">
+  <div class="container">
+    <span class="tag reveal">Let's go</span>
+    <h2 class="reveal">Not sure which <em>package?</em></h2>
+    <p class="reveal">Book a free 30-minute call and we'll work out exactly what you need together. No pressure, no hard sell.</p>
+    <div class="reveal">
+      <a href="contact.html" class="btn btn-gold"><span>Book a Free Call</span><span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer id="main-footer"></footer>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-question').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

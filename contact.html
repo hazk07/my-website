@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Sites by Hassan</title>
+<meta name="description" content="Get in touch to start your website project with Sites by Hassan.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.page-hero { padding: 160px 0 100px; border-bottom: 1px solid var(--border); }
+
+/* ─── CONTACT LAYOUT ─── */
+.contact-section { padding: 120px 0; }
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 100px;
+  align-items: start;
+}
+@media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; gap: 60px; } }
+
+/* ─── LEFT INFO ─── */
+.contact-info h3 { font-size: 1.8rem; margin-bottom: 16px; }
+.contact-info p { margin-bottom: 40px; }
+
+.contact-methods { display: flex; flex-direction: column; gap: 24px; }
+.contact-method {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 24px;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+.contact-method:hover { border-color: rgba(201,168,76,0.3); }
+.contact-method-icon {
+  width: 40px; height: 40px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+.contact-method-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.contact-method-value {
+  font-size: 0.95rem;
+  color: var(--white);
+}
+.contact-method-value a { color: var(--white); transition: color 0.2s; }
+.contact-method-value a:hover { color: var(--gold); }
+
+.response-note {
+  margin-top: 40px;
+  padding: 20px 24px;
+  border-left: 2px solid var(--gold);
+  background: rgba(201,168,76,0.04);
+}
+.response-note p { font-size: 0.85rem; margin: 0; }
+
+/* ─── FORM ─── */
+.contact-form-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 60px 52px;
+}
+@media (max-width: 600px) { .contact-form-wrap { padding: 40px 28px; } }
+
+.contact-form-wrap h3 { font-size: 1.8rem; margin-bottom: 8px; }
+.contact-form-wrap .sub { font-size: 0.88rem; color: var(--muted); margin-bottom: 40px; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+.form-group {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--off-black);
+  border: 1px solid var(--border);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--muted); }
+.form-group select { cursor: pointer; }
+.form-group select option { background: var(--off-black); }
+.form-group textarea { resize: vertical; min-height: 140px; }
+
+.form-group.full { grid-column: span 2; }
+@media (max-width: 600px) { .form-group.full { grid-column: span 1; } }
+
+.form-submit-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.form-note { font-size: 0.78rem; color: var(--muted); }
+
+/* Success state */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 40px 0;
+}
+.form-success.show { display: block; }
+.form-success .tick {
+  width: 64px; height: 64px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  color: var(--gold);
+  margin: 0 auto 24px;
+}
+.form-success h4 { font-size: 1.8rem; margin-bottom: 12px; }
+.form-success p { font-size: 0.9rem; }
+
+/* ─── PROCESS MINI ─── */
+.next-section {
+  background: var(--off-black);
+  border-top: 1px solid var(--border);
+  padding: 100px 0;
+}
+.next-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+  margin-top: 56px;
+}
+@media (max-width: 700px) { .next-grid { grid-template-columns: 1fr; } }
+
+.next-card {
+  background: var(--off-black);
+  padding: 44px 36px;
+}
+.next-card .n { font-family: var(--serif); font-size: 3rem; color: var(--border); line-height: 1; margin-bottom: 20px; }
+.next-card h4 { font-size: 1.1rem; margin-bottom: 10px; }
+.next-card p { font-size: 0.88rem; }
+</style>
+</head>
+<body>
+<nav id="main-nav"></nav>
+
+<!-- ─── HERO ─── -->
+<section class="page-hero">
+  <div class="container">
+    <span class="tag">Get in Touch</span>
+    <h1>Let's <em>talk.</em></h1>
+    <div class="divider"></div>
+    <p style="font-size:1.1rem; max-width:520px;">Tell me about your project. I'll get back to you within 24 hours with thoughts on how we can make it brilliant.</p>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- Left -->
+      <div class="contact-info reveal">
+        <span class="tag">Get in Touch</span>
+        <h3>We'd love to<br><em>hear from you</em></h3>
+        <p>Whether you have a clear brief or just a rough idea, reach out. All enquiries get a personal reply.</p>
+
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="contact-method-icon">✉</div>
+            <div>
+              <div class="contact-method-label">Email</div>
+              <div class="contact-method-value"><a href="mailto:hello@sitesbyhassan.com">hello@sitesbyhassan.com</a></div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">📅</div>
+            <div>
+              <div class="contact-method-label">Book a Call</div>
+              <div class="contact-method-value"><a href="#">calendly.com/sitesbyhassan</a></div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">📍</div>
+            <div>
+              <div class="contact-method-label">Based In</div>
+              <div class="contact-method-value">UK — working with clients worldwide</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="response-note">
+          <p>⏱ Typical response time: <strong style="color:var(--white)">under 4 hours</strong> during business hours.</p>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="reveal reveal-delay-1">
+        <div class="contact-form-wrap">
+          <h3>Start your <em>project</em></h3>
+          <p class="sub">Fill in the form and I'll come back to you within 24 hours.</p>
+
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name *</label>
+                <input type="text" id="first-name" placeholder="Your first name" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" placeholder="Your last name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" placeholder="you@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone (Optional)</label>
+                <input type="tel" id="phone" placeholder="+44 7700 900000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="business">Business / Brand Name</label>
+              <input type="text" id="business" placeholder="Your business name">
+            </div>
+            <div class="form-group">
+              <label for="package">Package Interest</label>
+              <select id="package">
+                <option value="" disabled selected>Select a package…</option>
+                <option>Starter — £299</option>
+                <option>Business — £599</option>
+                <option>Premium — £999</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell me about your project *</label>
+              <textarea id="message" placeholder="What does your business do? What are your goals for the website? Any inspiration or references?" required></textarea>
+            </div>
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-gold"><span>Send Enquiry</span><span>→</span></button>
+              <p class="form-note">No spam. No hard sell. Just a conversation.</p>
+            </div>
+          </form>
+
+          <div class="form-success" id="form-success">
+            <div class="tick">✓</div>
+            <h4>Message <em>received!</em></h4>
+            <p>Thanks for getting in touch. I'll be back to you within 24 hours — usually much sooner.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHAT HAPPENS NEXT ─── -->
+<section class="next-section">
+  <div class="container">
+    <span class="tag reveal">What Happens Next</span>
+    <h2 class="reveal">After you <em>reach out</em></h2>
+    <div class="next-grid">
+      <div class="next-card reveal">
+        <div class="n">01</div>
+        <h4>You hear back fast</h4>
+        <p>I'll reply within 24 hours (usually much sooner) to discuss your project and ask any follow-up questions.</p>
+      </div>
+      <div class="next-card reveal reveal-delay-1">
+        <div class="n">02</div>
+        <h4>Free discovery call</h4>
+        <p>We hop on a quick 30-minute call to make sure we're aligned on your vision, budget, and timeline.</p>
+      </div>
+      <div class="next-card reveal reveal-delay-2">
+        <div class="n">03</div>
+        <h4>Work begins</h4>
+        <p>Once you're happy to proceed, I get started. You'll see real progress within days, not weeks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="main-footer"></footer>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('first-name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const msg = document.getElementById('message').value.trim();
+  if (!name || !email || !msg) {
+    alert('Please fill in the required fields.');
+    return;
+  }
+  // Simulate submission
+  this.style.opacity = '0';
+  this.style.transition = 'opacity 0.4s';
+  setTimeout(() => {
+    this.style.display = 'none';
+    const success = document.getElementById('form-success');
+    success.classList.add('show');
+  }, 400);
+});
+</script>
+</body>
+</html>

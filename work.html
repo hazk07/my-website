@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work — Sites by Hassan</title>
+<meta name="description" content="See the websites we've built. Premium designs for restaurants, professionals, e-commerce and more.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.page-hero { padding: 160px 0 100px; border-bottom: 1px solid var(--border); }
+
+/* ─── FILTER BAR ─── */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 0;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.filter-btn:hover, .filter-btn.active {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ─── PORTFOLIO GRID ─── */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--border);
+}
+@media (max-width: 800px) { .portfolio-grid { grid-template-columns: 1fr; } }
+
+.portfolio-item {
+  background: var(--off-black);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.portfolio-item:nth-child(3) { grid-column: span 2; }
+@media (max-width: 800px) {
+  .portfolio-item:nth-child(3) { grid-column: span 1; }
+}
+
+.portfolio-mockup {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.portfolio-item:nth-child(3) .portfolio-mockup { aspect-ratio: 21/9; }
+@media (max-width: 800px) {
+  .portfolio-item:nth-child(3) .portfolio-mockup { aspect-ratio: 16/10; }
+}
+
+/* site color themes */
+.theme-crimson { background: linear-gradient(145deg, #120406 0%, #2e0c10 50%, #1a0408 100%); }
+.theme-violet  { background: linear-gradient(145deg, #0e0918 0%, #1e1040 50%, #120e28 100%); }
+.theme-sage    { background: linear-gradient(145deg, #071209 0%, #142a18 50%, #0a1c0e 100%); }
+.theme-slate   { background: linear-gradient(145deg, #080e14 0%, #111e2a 50%, #0c1620 100%); }
+.theme-amber   { background: linear-gradient(145deg, #120d02 0%, #2a1e04 50%, #1a1203 100%); }
+
+.portfolio-mockup .inner {
+  width: 80%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+}
+.portfolio-item:hover .inner { transform: scale(1.03); }
+.mock-nav { height: 28px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; padding: 0 16px; gap: 8px; }
+.mock-dot { width: 7px; height: 7px; border-radius: 50%; }
+.mock-body { padding: 20px 20px; display: flex; flex-direction: column; gap: 8px; }
+.mock-h { height: 10px; border-radius: 2px; }
+.mock-p { height: 6px; border-radius: 2px; }
+.mock-blocks { display: flex; gap: 8px; margin-top: 8px; }
+.mock-block { flex: 1; height: 48px; border-radius: 4px; }
+.mock-img { height: 80px; border-radius: 4px; margin-bottom: 8px; }
+
+.portfolio-hover {
+  position: absolute;
+  inset: 0;
+  background: rgba(8,8,8,0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.portfolio-item:hover .portfolio-hover { opacity: 1; }
+.portfolio-hover a {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 12px 28px;
+  transition: var(--transition);
+}
+.portfolio-hover a:hover { background: var(--gold); color: var(--black); }
+
+.portfolio-meta {
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+}
+.portfolio-meta-left h4 { font-size: 1.15rem; margin-bottom: 4px; }
+.portfolio-meta-left p { font-size: 0.78rem; color: var(--muted); }
+.portfolio-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+/* ─── RESULTS SECTION ─── */
+.results-section {
+  background: var(--off-black);
+  padding: 120px 0;
+}
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--border);
+  margin-top: 64px;
+}
+@media (max-width: 900px) { .results-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px)  { .results-grid { grid-template-columns: 1fr; } }
+
+.result-card {
+  background: var(--off-black);
+  padding: 48px 40px;
+  text-align: center;
+}
+.result-card .big-number {
+  font-family: var(--serif);
+  font-size: 4.5rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.result-card p { font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* ─── CTA ─── */
+.work-cta {
+  padding: 120px 0;
+  text-align: center;
+}
+.work-cta h2 { margin-bottom: 20px; }
+.work-cta p { max-width: 480px; margin: 0 auto 48px; }
+</style>
+</head>
+<body>
+<nav id="main-nav"></nav>
+
+<!-- ─── HERO ─── -->
+<section class="page-hero">
+  <div class="container">
+    <span class="tag">Portfolio</span>
+    <h1>Work we <em>love</em></h1>
+    <div class="divider"></div>
+    <p style="font-size:1.1rem; max-width:560px;">Every project here started with a conversation. Each one ended with a client who had a website they were genuinely proud of.</p>
+  </div>
+</section>
+
+<!-- ─── PORTFOLIO ─── -->
+<section style="padding: 80px 0 120px;">
+  <div class="container">
+    <div class="filter-bar reveal">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Hospitality</button>
+      <button class="filter-btn">Professional</button>
+      <button class="filter-btn">E-Commerce</button>
+      <button class="filter-btn">Health</button>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <!-- Card 1 -->
+      <div class="portfolio-item reveal">
+        <div class="portfolio-mockup theme-crimson">
+          <div class="inner">
+            <div class="mock-nav">
+              <div class="mock-dot" style="background:#ff5f57"></div>
+              <div class="mock-dot" style="background:#febc2e"></div>
+              <div class="mock-dot" style="background:#28c840"></div>
+            </div>
+            <div class="mock-body">
+              <div class="mock-img" style="background:linear-gradient(90deg, rgba(201,168,76,0.25), rgba(201,168,76,0.05))"></div>
+              <div class="mock-h" style="width:75%; background:rgba(201,168,76,0.4)"></div>
+              <div class="mock-p" style="width:60%; background:rgba(255,255,255,0.12)"></div>
+              <div class="mock-p" style="width:50%; background:rgba(255,255,255,0.08)"></div>
+              <div class="mock-blocks">
+                <div class="mock-block" style="background:rgba(201,168,76,0.15)"></div>
+                <div class="mock-block" style="background:rgba(255,255,255,0.05)"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-hover">
+            <a href="#">View Case Study</a>
+          </div>
+        </div>
+        <div class="portfolio-meta">
+          <div class="portfolio-meta-left">
+            <h4>Ember & Oak Restaurant</h4>
+            <p>Hospitality · London</p>
+          </div>
+          <div class="portfolio-tag">Hospitality</div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="portfolio-item reveal reveal-delay-1">
+        <div class="portfolio-mockup theme-violet">
+          <div class="inner">
+            <div class="mock-nav">
+              <div class="mock-dot" style="background:#ff5f57"></div>
+              <div class="mock-dot" style="background:#febc2e"></div>
+              <div class="mock-dot" style="background:#28c840"></div>
+            </div>
+            <div class="mock-body">
+              <div class="mock-h" style="width:80%; background:rgba(160,100,255,0.4)"></div>
+              <div class="mock-p" style="width:65%; background:rgba(255,255,255,0.12)"></div>
+              <div class="mock-p" style="width:45%; background:rgba(255,255,255,0.08)"></div>
+              <div class="mock-blocks">
+                <div class="mock-block" style="background:rgba(160,100,255,0.15)"></div>
+                <div class="mock-block" style="background:rgba(160,100,255,0.08)"></div>
+                <div class="mock-block" style="background:rgba(255,255,255,0.05)"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-hover">
+            <a href="#">View Case Study</a>
+          </div>
+        </div>
+        <div class="portfolio-meta">
+          <div class="portfolio-meta-left">
+            <h4>Vellum Legal</h4>
+            <p>Legal Services · Manchester</p>
+          </div>
+          <div class="portfolio-tag">Professional</div>
+        </div>
+      </div>
+
+      <!-- Card 3 — wide -->
+      <div class="portfolio-item reveal">
+        <div class="portfolio-mockup theme-sage">
+          <div class="inner" style="width:70%; display:flex; flex-direction:row; gap:0; overflow:hidden; border-radius:6px;">
+            <div style="flex:0 0 30%; border-right:1px solid rgba(255,255,255,0.05);">
+              <div class="mock-nav" style="border-bottom:1px solid rgba(255,255,255,0.05);"></div>
+              <div class="mock-body" style="gap:12px;">
+                <div class="mock-p" style="width:90%;background:rgba(100,200,120,0.3)"></div>
+                <div class="mock-p" style="width:80%;background:rgba(255,255,255,0.1)"></div>
+                <div class="mock-p" style="width:70%;background:rgba(255,255,255,0.07)"></div>
+                <div class="mock-p" style="width:75%;background:rgba(255,255,255,0.07)"></div>
+              </div>
+            </div>
+            <div style="flex:1;">
+              <div class="mock-nav"></div>
+              <div class="mock-body">
+                <div class="mock-img" style="background:linear-gradient(90deg,rgba(100,200,120,0.2),transparent)"></div>
+                <div class="mock-h" style="width:65%;background:rgba(100,200,120,0.4)"></div>
+                <div class="mock-p" style="width:50%;background:rgba(255,255,255,0.1)"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-hover">
+            <a href="#">View Case Study</a>
+          </div>
+        </div>
+        <div class="portfolio-meta">
+          <div class="portfolio-meta-left">
+            <h4>Verdant Wellness</h4>
+            <p>Health & E-Commerce · Online</p>
+          </div>
+          <div class="portfolio-tag">E-Commerce</div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="portfolio-item reveal">
+        <div class="portfolio-mockup theme-slate">
+          <div class="inner">
+            <div class="mock-nav">
+              <div class="mock-dot" style="background:#ff5f57"></div>
+              <div class="mock-dot" style="background:#febc2e"></div>
+              <div class="mock-dot" style="background:#28c840"></div>
+            </div>
+            <div class="mock-body">
+              <div class="mock-h" style="width:70%;background:rgba(80,160,255,0.4)"></div>
+              <div class="mock-p" style="width:55%;background:rgba(255,255,255,0.12)"></div>
+              <div class="mock-blocks">
+                <div class="mock-block" style="background:rgba(80,160,255,0.12)"></div>
+                <div class="mock-block" style="background:rgba(255,255,255,0.05)"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-hover"><a href="#">View Case Study</a></div>
+        </div>
+        <div class="portfolio-meta">
+          <div class="portfolio-meta-left"><h4>Northgate Architects</h4><p>Architecture · Birmingham</p></div>
+          <div class="portfolio-tag">Professional</div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="portfolio-item reveal reveal-delay-1">
+        <div class="portfolio-mockup theme-amber">
+          <div class="inner">
+            <div class="mock-nav">
+              <div class="mock-dot" style="background:#ff5f57"></div>
+              <div class="mock-dot" style="background:#febc2e"></div>
+              <div class="mock-dot" style="background:#28c840"></div>
+            </div>
+            <div class="mock-body">
+              <div class="mock-img" style="background:linear-gradient(90deg,rgba(255,180,50,0.2),transparent)"></div>
+              <div class="mock-h" style="width:70%;background:rgba(255,180,50,0.4)"></div>
+              <div class="mock-p" style="width:55%;background:rgba(255,255,255,0.1)"></div>
+            </div>
+          </div>
+          <div class="portfolio-hover"><a href="#">View Case Study</a></div>
+        </div>
+        <div class="portfolio-meta">
+          <div class="portfolio-meta-left"><h4>Soleil Bakery</h4><p>Food & Hospitality · Leeds</p></div>
+          <div class="portfolio-tag">Hospitality</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── RESULTS ─── -->
+<section class="results-section">
+  <div class="container">
+    <span class="tag reveal">By the Numbers</span>
+    <h2 class="reveal">Results that <em>speak</em></h2>
+    <div class="results-grid">
+      <div class="result-card reveal">
+        <div class="big-number">50+</div>
+        <p>Sites Delivered</p>
+      </div>
+      <div class="result-card reveal reveal-delay-1">
+        <div class="big-number">7</div>
+        <p>Avg. Days to Delivery</p>
+      </div>
+      <div class="result-card reveal reveal-delay-2">
+        <div class="big-number">100%</div>
+        <p>Client Satisfaction</p>
+      </div>
+      <div class="result-card reveal reveal-delay-3">
+        <div class="big-number">3×</div>
+        <p>Average Enquiry Increase</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="work-cta">
+  <div class="container">
+    <span class="tag reveal">Your Turn</span>
+    <h2 class="reveal">Want your site <em>here?</em></h2>
+    <p class="reveal">Join the list of businesses with a website they're genuinely proud of. Let's start your project today.</p>
+    <div class="reveal">
+      <a href="contact.html" class="btn btn-gold"><span>Start Your Project</span><span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer id="main-footer"></footer>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script>
+// Filter buttons (visual only)
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
